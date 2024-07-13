@@ -8,6 +8,7 @@ struct MoonView: View {
 
   @State var moon = MoonViewModel().moon
   @Environment(\.colorScheme) var colorScheme
+  @State var currentDate = Date()
 
   var body: some View {
     Text(formatDate(moon.date))
@@ -23,23 +24,48 @@ struct MoonView: View {
 
       Text("MoonDetails")
         .font(.title2)
-      Text("Julian Day: \(moon.moonDetail.julianDay)")
-      Text("daysElapsedInCycle: \(moon.moonDetail.daysElapsedInCycle)")
+      Text("Julian Day: \n\(moon.moonDetail.julianDay)")
+      Text("daysElapsedInCycle: \n\(moon.moonDetail.daysElapsedInCycle)")
       Text(ageOfMoon(moon.moonDetail.ageOfMoon))
       Text("distanceFromCenterOfEarth: \(moon.moonDetail.distanceFromCenterOfEarth) km")
       Text("phaseFraction: \(moon.moonDetail.phase)")
       Text("illuminatedFraction: \(moon.moonDetail.illuminatedFraction)")
 
-      Button("Update") {
-        moon = MoonViewModel(Date()).moon
-      }
-      .buttonStyle(.borderedProminent)
-      .padding(.top, 8)
+      dateButtons()
     }
     .padding()
   }
 
   // MARK: Private
+
+  private func dateButtons() -> some View {
+    HStack {
+      Button("Previous") {
+        var dateComponent = DateComponents()
+        dateComponent.day = -1
+        let calendar = Calendar.current
+        let previousDay = calendar.date(byAdding: dateComponent, to: currentDate)
+        currentDate = previousDay!
+        moon = MoonViewModel(currentDate).moon
+      }
+
+      Button("Now") {
+        currentDate = Date()
+        moon = MoonViewModel(currentDate).moon
+      }
+
+      Button("Next") {
+        var dateComponent = DateComponents()
+        dateComponent.day = 1
+        let calendar = Calendar.current
+        let nextDay = calendar.date(byAdding: dateComponent, to: currentDate)
+        currentDate = nextDay!
+        moon = MoonViewModel(currentDate).moon
+      }
+    }
+    .buttonStyle(.borderedProminent)
+    .padding(.top, 8)
+  }
 
   private func formatDate(_ date: Date) -> String {
     let formatter = DateFormatter()
