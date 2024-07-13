@@ -1,0 +1,15 @@
+{
+  "originHash" : "35de365e2756072de9c5066f21287819f9dfeb29dac8fac2586a8c979e618cae",
+  "pins" : [
+    {
+      "identity" : "tinymoon",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mannylopez/TinyMoon",
+      "state" : {
+        "revision" : "50b5dfd6ff0867d50c48f4ee2151615d7b790359",
+        "version" : "2.3.0"
+      }
+    }
+  ],
+  "version" : 3
+}

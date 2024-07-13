@@ -4,9 +4,9 @@ import SwiftUI
 
 @main
 struct TinyMoonMobileApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+  var body: some Scene {
+    WindowGroup {
+      ContentView()
     }
+  }
 }

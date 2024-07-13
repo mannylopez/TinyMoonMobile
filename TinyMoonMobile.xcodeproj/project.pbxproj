@@ -14,6 +14,7 @@
 		5870192B2C42E5400016B9FC /* TinyMoonMobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870192A2C42E5400016B9FC /* TinyMoonMobileTests.swift */; };
 		587019352C42E5400016B9FC /* TinyMoonMobileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587019342C42E5400016B9FC /* TinyMoonMobileUITests.swift */; };
 		587019372C42E5400016B9FC /* TinyMoonMobileUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587019362C42E5400016B9FC /* TinyMoonMobileUITestsLaunchTests.swift */; };
+		587019452C42E80A0016B9FC /* TinyMoon in Frameworks */ = {isa = PBXBuildFile; productRef = 587019442C42E80A0016B9FC /* TinyMoon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				587019452C42E80A0016B9FC /* TinyMoon in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +145,9 @@
 			dependencies = (
 			);
 			name = TinyMoonMobile;
+			packageProductDependencies = (
+				587019442C42E80A0016B9FC /* TinyMoon */,
+			);
 			productName = TinyMoonMobile;
 			productReference = 587019162C42E53E0016B9FC /* TinyMoonMobile.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +220,9 @@
 				Base,
 			);
 			mainGroup = 5870190D2C42E53E0016B9FC;
+			packageReferences = (
+				587019432C42E80A0016B9FC /* XCRemoteSwiftPackageReference "TinyMoon" */,
+			);
 			productRefGroup = 587019172C42E53E0016B9FC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -425,6 +433,7 @@
 				DEVELOPMENT_TEAM = KB8J5QDTYU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -454,6 +463,7 @@
 				DEVELOPMENT_TEAM = KB8J5QDTYU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -588,6 +598,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		587019432C42E80A0016B9FC /* XCRemoteSwiftPackageReference "TinyMoon" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mannylopez/TinyMoon";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		587019442C42E80A0016B9FC /* TinyMoon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 587019432C42E80A0016B9FC /* XCRemoteSwiftPackageReference "TinyMoon" */;
+			productName = TinyMoon;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5870190E2C42E53E0016B9FC /* Project object */;
 }
