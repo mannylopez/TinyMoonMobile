@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		5870191A2C42E53E0016B9FC /* TinyMoonMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587019192C42E53E0016B9FC /* TinyMoonMobileApp.swift */; };
-		5870191C2C42E53E0016B9FC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870191B2C42E53E0016B9FC /* ContentView.swift */; };
+		5870191C2C42E53E0016B9FC /* MoonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870191B2C42E53E0016B9FC /* MoonView.swift */; };
 		5870191E2C42E5400016B9FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5870191D2C42E5400016B9FC /* Assets.xcassets */; };
 		587019212C42E5400016B9FC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 587019202C42E5400016B9FC /* Preview Assets.xcassets */; };
 		5870192B2C42E5400016B9FC /* TinyMoonMobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870192A2C42E5400016B9FC /* TinyMoonMobileTests.swift */; };
 		587019352C42E5400016B9FC /* TinyMoonMobileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587019342C42E5400016B9FC /* TinyMoonMobileUITests.swift */; };
 		587019372C42E5400016B9FC /* TinyMoonMobileUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587019362C42E5400016B9FC /* TinyMoonMobileUITestsLaunchTests.swift */; };
 		587019452C42E80A0016B9FC /* TinyMoon in Frameworks */ = {isa = PBXBuildFile; productRef = 587019442C42E80A0016B9FC /* TinyMoon */; };
+		587019472C42E8860016B9FC /* MoonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587019462C42E8860016B9FC /* MoonViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,7 @@
 /* Begin PBXFileReference section */
 		587019162C42E53E0016B9FC /* TinyMoonMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyMoonMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		587019192C42E53E0016B9FC /* TinyMoonMobileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinyMoonMobileApp.swift; sourceTree = "<group>"; };
-		5870191B2C42E53E0016B9FC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5870191B2C42E53E0016B9FC /* MoonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonView.swift; sourceTree = "<group>"; };
 		5870191D2C42E5400016B9FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		587019202C42E5400016B9FC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		587019262C42E5400016B9FC /* TinyMoonMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinyMoonMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +46,7 @@
 		587019302C42E5400016B9FC /* TinyMoonMobileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinyMoonMobileUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		587019342C42E5400016B9FC /* TinyMoonMobileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinyMoonMobileUITests.swift; sourceTree = "<group>"; };
 		587019362C42E5400016B9FC /* TinyMoonMobileUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinyMoonMobileUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		587019462C42E8860016B9FC /* MoonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				587019192C42E53E0016B9FC /* TinyMoonMobileApp.swift */,
-				5870191B2C42E53E0016B9FC /* ContentView.swift */,
+				5870191B2C42E53E0016B9FC /* MoonView.swift */,
+				587019462C42E8860016B9FC /* MoonViewModel.swift */,
 				5870191D2C42E5400016B9FC /* Assets.xcassets */,
 				5870191F2C42E5400016B9FC /* Preview Content */,
 			);
@@ -265,7 +268,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5870191C2C42E53E0016B9FC /* ContentView.swift in Sources */,
+				587019472C42E8860016B9FC /* MoonViewModel.swift in Sources */,
+				5870191C2C42E53E0016B9FC /* MoonView.swift in Sources */,
 				5870191A2C42E53E0016B9FC /* TinyMoonMobileApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

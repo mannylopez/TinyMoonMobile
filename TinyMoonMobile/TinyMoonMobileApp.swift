@@ -6,7 +6,7 @@ import SwiftUI
 struct TinyMoonMobileApp: App {
   var body: some Scene {
     WindowGroup {
-      ContentView()
+      MoonView()
     }
   }
 }
