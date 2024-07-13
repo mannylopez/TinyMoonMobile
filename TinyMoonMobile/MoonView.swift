@@ -18,6 +18,14 @@ struct MoonView: View {
       Text("phaseFraction: \(moon.phaseFraction)")
       Text("illuminatedFraction: \(moon.illuminatedFraction)")
 
+      Text("MoonDetails")
+        .font(.title2)
+      Text("Julian Day: \(moon.moonDetail.julianDay)")
+      Text("daysElapsedInCycle: \(moon.moonDetail.daysElapsedInCycle)")
+      Text(ageOfMoon(moon.moonDetail.ageOfMoon))
+      Text("distanceFromCenterOfEarth: \(moon.moonDetail.distanceFromCenterOfEarth) km")
+      Text("phase: \(moon.moonDetail.phase)")
+
       Button("Update") {
         moon = MoonViewModel(Date()).moon
       }
@@ -33,6 +41,10 @@ struct MoonView: View {
     formatter.dateStyle = .long
     formatter.timeStyle = .long
     return formatter.string(from: date)
+  }
+
+  private func ageOfMoon(_ details: (days: Int, hours: Int, minutes: Int)) -> String {
+    "\(details.days) days, \(details.hours) hours, \(details.minutes) minutes"
   }
 
 
