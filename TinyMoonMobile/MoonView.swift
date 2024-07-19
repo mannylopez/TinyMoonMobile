@@ -9,27 +9,25 @@ struct MoonView: View {
   @State var moon = MoonViewModel().moon
   @Environment(\.colorScheme) var colorScheme
   @State var currentDate = Date()
+  @State var showRawValues = false
 
   var body: some View {
-    Text(formatDate(moon.date))
+    Text(title())
+      .font(.title2)
+      .padding()
 
     VStack(alignment: .leading, spacing: 12) {
       Text(moon.emoji)
       Text(moon.name)
-      Text(daysTillFullMoon(moon.daysTillFullMoon))
-      Text(daysTillNewMoon(moon.daysTillNewMoon))
-      Text("phaseFraction: \(moon.phaseFraction * 100)")
-      Text(illuminatedPercent(moon.illuminatedFraction))
+      Text(daysTillFullMoon())
+      Text(daysTillNewMoon())
+      Text(fractionToText(moon.phaseFraction, label: "Phase"))
+      Text(fractionToText(moon.illuminatedFraction, label: "Illumination"))
+      Text(distance())
+      Text(timeElapsed())
+        .lineLimit(2)
+        .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
         .padding(.bottom, 8)
-
-      Text("MoonDetails")
-        .font(.title2)
-      Text("Julian Day: \n\(moon.moonDetail.julianDay)")
-      Text("daysElapsedInCycle: \n\(moon.moonDetail.daysElapsedInCycle)")
-      Text(ageOfMoon(moon.moonDetail.ageOfMoon))
-      Text("distanceFromCenterOfEarth: \(moon.moonDetail.distanceFromCenterOfEarth) km")
-      Text("phaseFraction: \(moon.moonDetail.phase)")
-      Text("illuminatedFraction: \(moon.moonDetail.illuminatedFraction)")
 
       dateButtons()
     }
@@ -38,6 +36,21 @@ struct MoonView: View {
 
   // MARK: Private
 
+  private func timeElapsed() -> String {
+    var timeString = ""
+    if showRawValues {
+      timeString = """
+        Days into cycle:\n\(String(moon.moonDetail.daysElapsedInCycle))
+        """
+    } else {
+      timeString = """
+        Days into cycle:\n\(ageOfMoon(moon.moonDetail.ageOfMoon))
+        """
+    }
+    return timeString
+  }
+
+  @ViewBuilder
   private func dateButtons() -> some View {
     HStack {
       Button("Previous") {
@@ -65,43 +78,75 @@ struct MoonView: View {
     }
     .buttonStyle(.borderedProminent)
     .padding(.top, 8)
+
+    Button("RawValues") {
+      showRawValues.toggle()
+    }
+  }
+
+  private func title() -> String {
+    if showRawValues {
+      julianDay(moon.moonDetail.julianDay)
+    } else {
+      formatDate(moon.date)
+    }
+  }
+
+  private func julianDay(_ jd: Double) -> String {
+    "Julian day:\n\(jd)"
   }
 
   private func formatDate(_ date: Date) -> String {
     let formatter = DateFormatter()
     formatter.dateStyle = .long
     formatter.timeStyle = .long
-    return formatter.string(from: date)
+    let dateString = formatter.string(from: date)
+    let components = dateString.components(separatedBy: " at ")
+    return components[0] + "\n" + components[1]
   }
 
   private func ageOfMoon(_ details: (days: Int, hours: Int, minutes: Int)) -> String {
     "\(details.days) days, \(details.hours) hours, \(details.minutes) minutes"
   }
 
-  private func illuminatedPercent(_ fraction: Double) -> String {
+  private func distance() -> String {
     let numberFormatter = NumberFormatter()
-    numberFormatter.numberStyle = .percent
-    numberFormatter.maximumFractionDigits = 1
-    return "% illuminated: \(numberFormatter.string(from: NSNumber(value: fraction))!)"
+    if showRawValues {
+      numberFormatter.maximumFractionDigits = 3
+    } else {
+      numberFormatter.maximumFractionDigits = 0
+    }
+    return "Distance: \(numberFormatter.string(from: NSNumber(value: moon.moonDetail.distanceFromCenterOfEarth))!) km"
   }
 
-  private func daysTillFullMoon(_ daysTillFullMoon: Int) -> String {
-    if daysTillFullMoon == 0 {
-      ""
-    } else if daysTillFullMoon == 1 {
+  private func fractionToText(_ fraction: Double, label: String) -> String {
+    let numberFormatter = NumberFormatter()
+    if showRawValues {
+      numberFormatter.maximumFractionDigits = 6
+    } else {
+      numberFormatter.numberStyle = .percent
+      numberFormatter.maximumFractionDigits = 1
+    }
+    return "\(label): \(numberFormatter.string(from: NSNumber(value: fraction))!)"
+  }
+
+  private func daysTillFullMoon() -> String {
+    if moon.daysTillFullMoon == 0 {
+      " "
+    } else if moon.daysTillFullMoon == 1 {
       "\(fullMoonEmoji()) Full moon in 1 day"
     } else {
-      "\(fullMoonEmoji()) Full moon in \(daysTillFullMoon) days"
+      "\(fullMoonEmoji()) Full moon in \(moon.daysTillFullMoon) days"
     }
   }
 
-  private func daysTillNewMoon(_ daysTillNewMoon: Int) -> String {
-    if daysTillNewMoon == 0 {
-      ""
-    } else if daysTillNewMoon == 1 {
+  private func daysTillNewMoon() -> String {
+    if moon.daysTillNewMoon == 0 {
+      " "
+    } else if moon.daysTillNewMoon == 1 {
       "\(newMoonEmoji()) New moon in 1 day"
     } else {
-      "\(newMoonEmoji()) New moon in \(daysTillNewMoon) days"
+      "\(newMoonEmoji()) New moon in \(moon.daysTillNewMoon) days"
     }
   }
 
