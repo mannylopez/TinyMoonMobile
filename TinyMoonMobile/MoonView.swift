@@ -10,8 +10,15 @@ struct MoonView: View {
   @Environment(\.colorScheme) var colorScheme
   @State var currentDate = Date()
   @State var showRawValues = false
+  @State var isDarkMode = false
 
   var body: some View {
+    Toggle(isOn: $isDarkMode) {
+      Image(systemName: isDarkMode ? "moon.fill" : "sun.max")
+    }
+    .toggleStyle(.button)
+
+
     Text(title())
       .font(.title2)
       .padding()
@@ -32,6 +39,7 @@ struct MoonView: View {
       dateButtons()
     }
     .padding()
+    .preferredColorScheme(isDarkMode ? .dark : .light)
   }
 
   // MARK: Private
