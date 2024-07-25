@@ -48,11 +48,11 @@ struct MoonView: View {
     var timeString = ""
     if showRawValues {
       timeString = """
-        Days into cycle:\n\(String(moon.moonDetail.daysElapsedInCycle))
+        Days into cycle:\n\(String(moon.daysElapsedInCycle))
         """
     } else {
       timeString = """
-        Days into cycle:\n\(ageOfMoon(moon.moonDetail.ageOfMoon))
+        Days into cycle:\n\(ageOfMoon(moon.ageOfMoon))
         """
     }
     return timeString
@@ -94,7 +94,7 @@ struct MoonView: View {
 
   private func title() -> String {
     if showRawValues {
-      julianDay(moon.moonDetail.julianDay)
+      julianDay(moon.julianDay)
     } else {
       formatDate(moon.date)
     }
@@ -124,7 +124,7 @@ struct MoonView: View {
     } else {
       numberFormatter.maximumFractionDigits = 0
     }
-    return "Distance: \(numberFormatter.string(from: NSNumber(value: moon.moonDetail.distanceFromCenterOfEarth))!) km"
+    return "Distance: \(numberFormatter.string(from: NSNumber(value: moon.distanceFromCenterOfEarth))!) km"
   }
 
   private func fractionToText(_ fraction: Double, label: String) -> String {
